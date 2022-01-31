@@ -24,6 +24,7 @@
             android:layout_marginTop="40dp"
             android:gravity="center"
             android:text="OTP Verification"
+            android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="bold" />
 
@@ -52,14 +53,16 @@
             android:textSize="24sp"
 
             />
+
         <Button
             android:id="@+id/button"
             android:layout_width="339dp"
             android:layout_height="93dp"
             android:layout_gravity="center"
             android:layout_marginTop="80dp"
-            android:text="Continue"
+            android:backgroundTint="#F45145"
 
+            android:text="Continue"
             android:textAllCaps="false"
             android:textSize="34sp"
             app:cornerRadius="40sp" />
