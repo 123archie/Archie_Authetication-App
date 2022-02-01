@@ -14,6 +14,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthOptions;
+import com.google.firebase.auth.PhoneAuthProvider;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         editTextTextPersonName19 = findViewById(R.id.editTextTextPersonName19);
         editTextTextPersonName22 = findViewById(R.id.editTextTextPersonName22);
         firebaseauth = FirebaseAuth.getInstance();
+
         button3 = findViewById(R.id.button3);
 
         button3.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +63,15 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "All credentials valid", Toast.LENGTH_SHORT).show();
 
                     registerUser(email, password);
+
+                    PhoneAuthOptions options =
+                            PhoneAuthOptions.newBuilder(firebaseauth)
+                                    .setPhoneNumber("+91"+phone)       // Phone number to verify
+                                    .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                                    .setActivity(MainActivity.this)                 // Activity (for callback binding)
+                                    .setCallbacks(new mCallbacks())       // OnVerificationStateChangedCallbacks
+                                    .build();
+                    PhoneAuthProvider.verifyPhoneNumber(options);
 
                     Intent intent =new Intent(MainActivity.this, MainActivity2.class);
                     startActivity(intent);

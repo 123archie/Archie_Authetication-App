@@ -2,7 +2,7 @@ package com.example.authenticationapp;
 
 import org.testng.annotations.Test;
 
-import static org.junit.Assert.*;
+
 
 
 /**
